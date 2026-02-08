@@ -1,5 +1,17 @@
 package engine.mobile;
+import java.util.ArrayList;
 
-public class Canon {
+import engine.map.*;
+
+public class Canon extends Piece {
+	
+public Canon (CaseNormal pos ,CouleurePiece col) {
+	super(pos,col);
+}
+@Override
+public ArrayList<Case> getDeplacement(){
+	return null;
+	
+}
 
 }

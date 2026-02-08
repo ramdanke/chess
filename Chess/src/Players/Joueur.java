@@ -1,5 +1,5 @@
 package Players;
 
-public class Joueur {
+public abstract class Joueur {
 
 }
