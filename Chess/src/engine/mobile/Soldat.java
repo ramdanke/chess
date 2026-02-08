@@ -31,8 +31,27 @@ public class Soldat extends Piece {
  	 		}	
  		}
  	}
+ 	if(cas.getLigne()>6) {
+ 		i=cas.getLigne();
+ 		if(j<10) {
+ 		if(P.getPieces().get(P.getCases()[i][j+1])==null) {
+ 			list.add(P.getCases()[i][j+1]);
+ 		}else {
+ 			if(!P.getPieces().get(P.getCases()[i][j+1]).getCol().equals(this.getCol())){
+ 			list.add(P.getCases()[i][j+1]);
+ 			}
+ 		}
+ 		}
+ 		if(j>0) {
+ 			if(P.getPieces().get(P.getCases()[i][j-1])==null) {
+ 	 			list.add(P.getCases()[i][j-1]);
+ 	 		}else {
+ 	 			if(!P.getPieces().get(P.getCases()[i][j-1]).getCol().equals(this.getCol())){
+ 	 			list.add(P.getCases()[i][j-1]);
+ 	 			}
+ 	 		}
+ 		}
+ 	}
  	return list;
  }
-
- 
 }

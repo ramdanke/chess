@@ -30,5 +30,4 @@ public CaseNormal getPosition() {
 public void setPosition(CaseNormal position) {
 	this.position = position;
 }
-
 }

@@ -9,7 +9,7 @@ public Canon (CaseNormal pos ,CouleurePiece col) {
 	super(pos,col);
 }
 @Override
-public ArrayList<Case> getDeplacement(){
+public ArrayList<Case> getDeplacement(Plateau P){
 	return null;
 	
 }
