@@ -15,7 +15,7 @@ public ArrayList<Case> getDeplacement(Plateau P){
 	int j=cas.getColonne()+1;
 	if(i<=10 && j<=10) {
 	if(P.getCases()[i][j].getCol().equals(Couleur.ROUG) || P.getCases()[i+1][j+1].getCol().equals(Couleur.ROUG)) {
-		if(P.getPieces().get(P.getCases()[i+1][j+2])==null ) {
+		if( P.getPieces().get(P.getCases()[i+1][j+2])==null ) {
 			list.add(P.getCases()[i+1][j+2]);
 		}
 		else if(!P.getPieces().get(P.getCases()[i+1][j+2]).getCol().equals(this.getCol())){
