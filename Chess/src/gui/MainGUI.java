@@ -1,38 +1,35 @@
 package gui;
 
 import javax.swing.*;
-import engine.map.Plateau;
 
-public class MainGUI extends JFrame implements Runnable {
-	private static final long serialVersionUID = 1L;
-	private Plateau plateau;
-	private GameDisplay display;
-	public MainGUI(String title) {
-		super(title);
-		init();
-	} 
-	private void init() {
-		plateau = new Plateau();
-		display = new GameDisplay(plateau);
-		add(display);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setVisible(true);
-	}
-	@Override 
-	public void run() {   
-		while (true) {
-			try {
-				Thread.sleep(50); 
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			display.repaint();
-		}
-	}
-	public static void main(String[] args) {
-		MainGUI gui = new MainGUI("Chess Game");
-		Thread gameThread = new Thread(gui);
-		gameThread.start();
-	}
+import engine.process.GameManager;
+
+public class MainGUI extends JFrame {
+    private static final long serialVersionUID = 1L;
+    GameManager gameManager;
+    GameDisplay display;
+    public MainGUI(String title) {
+        super(title);
+        init();
+    }
+    private void init() {
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(500,500);
+        setLocationRelativeTo(null);
+        setContentPane(new PageAcc(this));
+        setVisible(true);
+    }
+    public void lancerPartie() {
+        gameManager = new GameManager();
+        display = new GameDisplay(gameManager);
+        setContentPane(display);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        revalidate();
+        repaint();
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new MainGUI("Xiangqi Game");
+        });
+    }
 }

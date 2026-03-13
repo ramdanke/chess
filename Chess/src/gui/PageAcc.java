@@ -3,60 +3,91 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class PageAcc extends JFrame {
+public class PageAcc extends JPanel {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public PageAcc() {
+    public PageAcc(MainGUI gui) {
 
-        setTitle("Xiangqi Game");
-        setSize(350,450);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        setBackground(new Color(30,30,30));
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        // ----- TITRE -----
 
-        JLabel titre = new JLabel("XIANGQI GAME");
-        titre.setFont(new Font("Arial", Font.BOLD, 24));
-        titre.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel titre = new JLabel("XIANGQI GAME", SwingConstants.CENTER);
+        titre.setFont(new Font("Arial", Font.BOLD, 36));
+        titre.setForeground(Color.WHITE);
 
-        JLabel version = new JLabel("(Version modifiée)");
-        version.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel version = new JLabel("CHESS", SwingConstants.CENTER);
+        version.setForeground(Color.LIGHT_GRAY);
+ 
+        JPanel titrePanel = new JPanel();
+        titrePanel.setBackground(new Color(30,30,30));
+        titrePanel.setLayout(new BoxLayout(titrePanel, BoxLayout.Y_AXIS));
+
+        titrePanel.add(Box.createVerticalStrut(40));
+        titrePanel.add(titre);
+        titrePanel.add(Box.createVerticalStrut(10));
+        titrePanel.add(version);
+
+        add(titrePanel, BorderLayout.NORTH);
+
+        // ----- BOUTONS -----
 
         JButton vsOrdinateur = new JButton("VS ORDINATEUR");
-        vsOrdinateur.setAlignmentX(Component.CENTER_ALIGNMENT);
-        vsOrdinateur.setMaximumSize(new Dimension(200,40));
-
         JButton vsAmis = new JButton("VS AMIS");
+
+        vsOrdinateur.setMaximumSize(new Dimension(220,50));
+        vsAmis.setMaximumSize(new Dimension(220,50));
+
+        vsOrdinateur.setFont(new Font("Arial", Font.BOLD, 16));
+        vsAmis.setFont(new Font("Arial", Font.BOLD, 16));
+
+        JPanel boutonsPanel = new JPanel();
+        boutonsPanel.setBackground(new Color(30,30,30));
+        boutonsPanel.setLayout(new BoxLayout(boutonsPanel, BoxLayout.Y_AXIS));
+
+        boutonsPanel.add(Box.createVerticalStrut(60));
+        boutonsPanel.add(vsOrdinateur);
+        boutonsPanel.add(Box.createVerticalStrut(20));
+        boutonsPanel.add(vsAmis);
+
+        vsOrdinateur.setAlignmentX(Component.CENTER_ALIGNMENT);
         vsAmis.setAlignmentX(Component.CENTER_ALIGNMENT);
-        vsAmis.setMaximumSize(new Dimension(200,40));
 
-        JLabel infoTitre = new JLabel("Informations :");
-        infoTitre.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(boutonsPanel, BorderLayout.CENTER);
 
+        // ----- INFORMATIONS -----
+
+        JPanel infoPanel = new JPanel();
+        infoPanel.setBackground(new Color(30,30,30));
+        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
+
+        JLabel infoTitre = new JLabel("Informations");
         JLabel info1 = new JLabel("Plateau 11 x 11 avec zones spéciales");
-        info1.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         JLabel info2 = new JLabel("Règles personnalisées");
+
+        infoTitre.setForeground(Color.WHITE);
+        info1.setForeground(Color.LIGHT_GRAY);
+        info2.setForeground(Color.LIGHT_GRAY);
+
+        infoTitre.setAlignmentX(Component.CENTER_ALIGNMENT);
+        info1.setAlignmentX(Component.CENTER_ALIGNMENT);
         info2.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        panel.add(Box.createVerticalStrut(30));
-        panel.add(titre);
-        panel.add(version);
-        panel.add(Box.createVerticalStrut(40));
-        panel.add(vsOrdinateur);
-        panel.add(Box.createVerticalStrut(20));
-        panel.add(vsAmis);
-        panel.add(Box.createVerticalStrut(40));
-        panel.add(infoTitre);
-        panel.add(info1);
-        panel.add(info2);
+        infoPanel.add(Box.createVerticalStrut(20));
+        infoPanel.add(infoTitre);
+        infoPanel.add(Box.createVerticalStrut(10));
+        infoPanel.add(info1);
+        infoPanel.add(info2);
+        infoPanel.add(Box.createVerticalStrut(20));
 
-        add(panel);
-    }
+        add(infoPanel, BorderLayout.SOUTH);
 
-    public static void main(String[] args) {
-        new PageAcc().setVisible(true);
+        // ----- ACTION -----
+
+        vsAmis.addActionListener(e -> {
+            gui.lancerPartie();
+        });
     }
 }
