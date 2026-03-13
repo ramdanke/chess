@@ -16,7 +16,7 @@ public class Elephant extends Piece {
 		CaseNormal cas = this.getPosition();
 		if (this.getCol() == CouleurePiece.ROUGE) {
 			int i = cas.getLigne() + 1;
-			int j = cas.getColonne() + 1;
+			int j = cas.getColonne() + 1; 
 			if (i <= 4 && j <= 10) {
 				if ((P.getCases()[i][j].getCol().equals(Couleur.ROUG)
 						&& P.getPieces().get(P.getCases()[i][j + 1]) == null)

@@ -19,7 +19,7 @@ public abstract class Piece {
 	}
 
 	public CouleurePiece getCol() {
-		return col;
+		return col; 
 	}
 
 	public void setCol(CouleurePiece col) {

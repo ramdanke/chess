@@ -11,7 +11,7 @@ public class Conseillere extends Piece {
 	 public ArrayList<Case> getDeplacement(Plateau P){
 	 	ArrayList<Case> list=new ArrayList<Case>(); 
 	 	CaseNormal cas=this.getPosition();
-	 	
+	 	 
 	 	int i=cas.getLigne()+1; 
 	 	int j=cas.getColonne()+1;
 	 	if(i<=10 && j<=10) {

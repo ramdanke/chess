@@ -18,8 +18,7 @@ public class GameDisplay extends JPanel implements MouseListener {
 
     private Piece pieceSelectionnee = null;
     private Case caseSelectionnee = null;
-
-    // Variables dynamiques
+ 
     private int tailleCase;
     private int offsetX;
     private int offsetY;
@@ -34,14 +33,32 @@ public class GameDisplay extends JPanel implements MouseListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        calculDimensions();
+        calculDimensions(); 
 
         paintStrategy.paintPlateau(plateau, g, tailleCase, offsetX, offsetY);
         paintStrategy.paintPieces(plateau, g, tailleCase, offsetX, offsetY);
 
-        if (pieceSelectionnee != null) {
-            ArrayList<Case> coups = pieceSelectionnee.getDeplacement(plateau);
-            paintStrategy.paintDeplacements(coups, g, tailleCase, offsetX, offsetY);
+        // afficher les déplacements possibles
+        if (pieceSelectionnee != null &&
+            pieceSelectionnee.getCol() == plateau.getJoueurCourant()) {
+
+        	ArrayList<Case> coups = new ArrayList<>();
+
+        	ArrayList<Case> coupsPossibles = pieceSelectionnee.getDeplacement(plateau);
+
+        	for (Case c : coupsPossibles) {
+        	    if (plateau.coupValide(caseSelectionnee, c)) {
+        	        coups.add(c);
+        	    }
+        	} 
+
+            paintStrategy.paintDeplacements(
+                    coups,
+                    g,
+                    tailleCase,
+                    offsetX,
+                    offsetY
+            );
         }
     }
 
@@ -74,30 +91,41 @@ public class GameDisplay extends JPanel implements MouseListener {
             ligne >= plateau.getCases().length ||
             colonne >= plateau.getCases()[0].length) {
             return;
-        }
+        } 
 
         Case c = plateau.getCases()[ligne][colonne];
         Piece p = plateau.getPieces().get(c);
 
+        // sélection de pièce
         if (pieceSelectionnee == null) {
 
-            if (p != null) {
+            if (p != null && p.getCol() == plateau.getJoueurCourant()) {
                 pieceSelectionnee = p;
                 caseSelectionnee = c;
             }
 
-        } else {
+        }
+        // tentative de déplacement
+        else {
 
-            ArrayList<Case> coups = pieceSelectionnee.getDeplacement(plateau);
+            plateau.jouerCup(caseSelectionnee, c);
 
-            if (coups != null && coups.contains(c)) {
+            CouleurePiece joueur = plateau.getJoueurCourant();
 
-                plateau.getPieces().remove(caseSelectionnee);
+            if (plateau.EnEchecEtMat(joueur)) {
 
-                if (c instanceof CaseNormal) {
-                    pieceSelectionnee.setPosition((CaseNormal) c);
-                    plateau.getPieces().put(c, pieceSelectionnee);
-                }
+                JOptionPane.showMessageDialog(
+                        this,
+                        "ECHEC ET MAT ! Joueur " + joueur + " a perdu"
+                );
+
+            }
+            else if (plateau.EnEchec(joueur)) {
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "ECHEC !"
+                );
             }
 
             pieceSelectionnee = null;
@@ -108,7 +136,10 @@ public class GameDisplay extends JPanel implements MouseListener {
     }
 
     public void mousePressed(MouseEvent e) {}
+
     public void mouseReleased(MouseEvent e) {}
+
     public void mouseEntered(MouseEvent e) {}
+
     public void mouseExited(MouseEvent e) {}
 }

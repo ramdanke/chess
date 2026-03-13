@@ -9,13 +9,13 @@ public class Chevalier extends Piece {
 		super(pos,col);
 	} 
 	@Override 
-	public ArrayList<Case> getDeplacement(Plateau P){
+	public ArrayList<Case> getDeplacement(Plateau P){ 
 		ArrayList<Case> list=new ArrayList<Case>();
 		Case cas=this.getPosition();
-		  
+		     
 		int i=cas.getLigne()+1;     
 		int j=cas.getColonne();
-		if( i<10 ) { 
+		if( i<10 ) {  
 		if((P.getCases()[i][j].getCol().equals(Couleur.BLUE) && P.getPieces().get(P.getCases()[i+1][j])==null) || 
 				((P.getCases()[i+1][j].getCol().equals(Couleur.BLUE) && P.getPieces().get(P.getCases()[i][j])==null))) {
 			if(j<10 ) {

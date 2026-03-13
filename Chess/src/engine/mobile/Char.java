@@ -12,9 +12,9 @@ public class Char extends Piece {
 	public ArrayList<Case> getDeplacement(Plateau P){
 		ArrayList<Case> list=new ArrayList<Case>();  
 		CaseNormal cas =this.getPosition();
-		int i=cas.getLigne()+1; 
+		int i=cas.getLigne()+1;  
 		int j=cas.getColonne();
-		boolean B=true;
+		boolean B=true; 
 		while(B && i<=10 ) {  
 			Piece p = P.getPieces().get(P.getCases()[i][j]); 
 			if((P.getCases()[i][j].getCol().equals(Couleur.BLANC) ||P.getCases()[i][j].getCol().equals(Couleur.NOIR) || 
