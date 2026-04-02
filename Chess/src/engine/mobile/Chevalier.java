@@ -14,12 +14,12 @@ public class Chevalier extends Piece {
 		Case cas=this.getPosition();
 		     
 		int i=cas.getLigne()+1;     
-		int j=cas.getColonne();
+		int j=cas.getColonne(); 
 		if( i<10 ) {  
 		if((P.getCases()[i][j].getCol().equals(Couleur.BLUE) && P.getPieces().get(P.getCases()[i+1][j])==null) || 
-				((P.getCases()[i+1][j].getCol().equals(Couleur.BLUE) && P.getPieces().get(P.getCases()[i][j])==null))) {
+				((P.getCases()[i+1][j].getCol().equals(Couleur.BLUE) && P.getPieces().get(P.getCases()[i][j])==null))) { 
 			if(j<10 ) {
-			if(P.getCases()[i+2][j+1].getCol().equals(Couleur.ROUG)) {
+			if(P.getCases()[i+2][j+1].getCol().equals(Couleur.ROUG)) { 
 				if(P.getPieces().get(P.getCases()[i+2][j+2])==null ||
 						!P.getPieces().get(P.getCases()[i+2][j+2]).getCol().equals(this.getCol())) {
 				list.add(P.getCases()[i+2][j+2]);

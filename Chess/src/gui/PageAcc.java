@@ -10,9 +10,8 @@ public class PageAcc extends JPanel {
     public PageAcc(MainGUI gui) {
 
         setLayout(new BorderLayout());
-        setBackground(new Color(30,30,30));
+        setBackground(new Color(30,30,30)); 
 
-        // ----- TITRE -----
 
         JLabel titre = new JLabel("XIANGQI GAME", SwingConstants.CENTER);
         titre.setFont(new Font("Arial", Font.BOLD, 36));
@@ -20,7 +19,7 @@ public class PageAcc extends JPanel {
 
         JLabel version = new JLabel("CHESS", SwingConstants.CENTER);
         version.setForeground(Color.LIGHT_GRAY);
- 
+  
         JPanel titrePanel = new JPanel();
         titrePanel.setBackground(new Color(30,30,30));
         titrePanel.setLayout(new BoxLayout(titrePanel, BoxLayout.Y_AXIS));
@@ -32,7 +31,6 @@ public class PageAcc extends JPanel {
 
         add(titrePanel, BorderLayout.NORTH);
 
-        // ----- BOUTONS -----
 
         JButton vsOrdinateur = new JButton("VS ORDINATEUR");
         JButton vsAmis = new JButton("VS AMIS");
@@ -52,12 +50,11 @@ public class PageAcc extends JPanel {
         boutonsPanel.add(Box.createVerticalStrut(20));
         boutonsPanel.add(vsAmis);
 
-        vsOrdinateur.setAlignmentX(Component.CENTER_ALIGNMENT);
+        vsOrdinateur.setAlignmentX(Component.CENTER_ALIGNMENT);  
         vsAmis.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(boutonsPanel, BorderLayout.CENTER);
 
-        // ----- INFORMATIONS -----
 
         JPanel infoPanel = new JPanel();
         infoPanel.setBackground(new Color(30,30,30));
@@ -84,10 +81,34 @@ public class PageAcc extends JPanel {
 
         add(infoPanel, BorderLayout.SOUTH);
 
-        // ----- ACTION -----
 
         vsAmis.addActionListener(e -> {
             gui.lancerPartie();
+        });
+        vsOrdinateur.addActionListener(e -> {
+
+            String[] choix = {"FACILE", "MOYEN", "DIFFICILE"};
+
+            int reponse = JOptionPane.showOptionDialog(
+                    this,
+                    "Choisir la difficulté",
+                    "Difficulté",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    choix,
+                    choix[0]
+            );
+
+            if (reponse == 0) {
+                gui.lancerPartieBot(engine.process.Niveau.FACILE);
+            }
+            else if (reponse == 1) {
+                gui.lancerPartieBot(engine.process.Niveau.MOYEN);
+            }
+            else if (reponse == 2) {
+                gui.lancerPartieBot(engine.process.Niveau.DIFFICILE);
+            }
         });
     }
 }

@@ -11,12 +11,11 @@ public class GameManager {
         plateau = new Plateau();
     }
 
-    // donne accès au plateau pour l'affichage
     public Plateau getPlateau() {
         return plateau;
     }
 
-    // joue un coup
+    // joue un coup a utiliser aulieue de jouerCup 
     public void jouerCoup(Case depart, Case arrivee) {
         plateau.jouerCup(depart, arrivee);
     }

@@ -19,7 +19,7 @@ public class Plateau {
 				}
 				else if( i==5) {
 					cases[i][j] =new CaseMort(i,j,Couleur.BLUE); 
-				}   
+				}    
 				else 
 					if((i<=2 && (j<=6 && j>=4)) ||(i>=8 && (j<=6 && j>=4))) { 
 						cases[i][j]=new CaseNormal(i,j,Couleur.JAUNE,TypeCaseNormale.CASE_PALAIS); 
@@ -136,7 +136,7 @@ public boolean EnBordure(Case cas) {
 	}
 
 	public void setJoueurCourant(CouleurePiece joueurCourant) {
-		this.joueurCourant = joueurCourant;
+		this.joueurCourant = joueurCourant; 
 	}
 	public void ChangerJoueur() {
 		if(this.getJoueurCourant().equals(CouleurePiece.ROUGE)){
@@ -166,59 +166,86 @@ public boolean EnBordure(Case cas) {
 	    return null;
 	}
 	public boolean RoiFacAfac() {
-	Case roiRouge =CaseRoi(CouleurePiece.ROUGE);
-	Case roiNoir=CaseRoi(CouleurePiece.NOIR);
-	if(roiRouge.getColonne()!= roiNoir.getColonne())
-		return false;
-	if(roiRouge.getColonne()==roiNoir.getColonne()) {
-		for(int i=roiRouge.getLigne()+1;i<roiNoir.getLigne();i++) {
-			if(this.getPieces().get(getCases()[i][roiRouge.getColonne()])!=null) {
-			return false;
-			}
-		}
-	}
-	return true;
+
+	    Case roiRouge = CaseRoi(CouleurePiece.ROUGE);
+	    Case roiNoir = CaseRoi(CouleurePiece.NOIR);
+
+	    if (roiRouge == null || roiNoir == null) return false;
+
+	    
+	    if (roiRouge.getColonne() != roiNoir.getColonne())
+	        return false;
+
+	    int col = roiRouge.getColonne();
+
+	   
+	    int start = Math.min(roiRouge.getLigne(), roiNoir.getLigne()) + 1;
+	    int end   = Math.max(roiRouge.getLigne(), roiNoir.getLigne());
+
+	    for (int i = start; i < end; i++) {
+
+	        if (pieces.get(cases[i][col]) != null) {
+	            return false; 
+	        }
+	    }
+
+	    return true; // face à face
 	}
 	public boolean coupValide(Case depart, Case arrivee) {
+
 	    Piece piece = pieces.get(depart);
-	    if(!piece.getDeplacement(this).contains(arrivee)) {
+
+	    if (piece == null) return false;
+
+	    // règle de déplacement
+	    if (!piece.getDeplacement(this).contains(arrivee)) {
 	        return false;
 	    }
+
 	    Piece pieceCapturee = pieces.get(arrivee);
+
+	    // -------- SIMULATION --------
 	    pieces.remove(depart);
 	    pieces.put(arrivee, piece);
+
 	    Case anciennePosition = piece.getPosition();
 	    piece.setPosition((CaseNormal) arrivee);
+
+	    // récupérer le général du joueur courant
 	    Case caseGeneral = CaseRoi(joueurCourant);
-	    CouleurePiece adversaire;
-	    if(joueurCourant == CouleurePiece.ROUGE) {
-	        adversaire = CouleurePiece.NOIR;
-	    }
-	    else {
-	        adversaire = CouleurePiece.ROUGE; 
-	    }
+
+	    CouleurePiece adversaire =
+	            (joueurCourant == CouleurePiece.ROUGE)
+	            ? CouleurePiece.NOIR
+	            : CouleurePiece.ROUGE;
+
 	    boolean echec = estMenacer(caseGeneral, adversaire);
 	    boolean face = RoiFacAfac();
+
+	    // -------- ROLLBACK --------
 	    pieces.remove(arrivee);
 	    pieces.put(depart, piece);
 	    piece.setPosition((CaseNormal) anciennePosition);
-	    if(pieceCapturee != null) {
+
+	    if (pieceCapturee != null) {
 	        pieces.put(arrivee, pieceCapturee);
 	    }
+
+	    // -------- RESULTAT --------
 	    return !echec && !face;
 	}
 	public void DeplacerePiece(Case depart, Case arrivee) {
 	    Piece p = pieces.get(depart);
 	    pieces.remove(depart);
 	    pieces.put(arrivee, p); 
-	    p.setPosition((CaseNormal) arrivee);
+	    p.setPosition((CaseNormal) arrivee); 
 	}
 	public void jouerCup(Case depart, Case arrivee) {
 	    if(!existPiece(depart)) return;
 	    if(!bonJoueure(depart)) return;
 	    if(!coupValide(depart, arrivee)) return;
 	    DeplacerePiece(depart, arrivee);
-	    ChangerJoueur();
+	    ChangerJoueur(); 
 	}
 	public boolean estMenacer(Case c, CouleurePiece agresseur) {
 	    for(Case casePiece : pieces.keySet()) {
@@ -231,24 +258,23 @@ public boolean EnBordure(Case cas) {
 	        }
 	    }
 	    return false;
-	} 
+	}  
 	public boolean EnEchec(CouleurePiece joueure) {
 		CouleurePiece joueureAdv;
 		if(joueure.equals(CouleurePiece.NOIR)) {
 			joueureAdv=CouleurePiece.ROUGE;
 		}else {
 			joueureAdv=CouleurePiece.NOIR;
-		}
+		}     
 		return(this.estMenacer(CaseRoi(joueure), joueureAdv));
 	}
-	public boolean EnEchecEtMat(CouleurePiece joueur) {
+	public boolean EnEchecEtMat(CouleurePiece joueur) { 
 
 	    if(!EnEchec(joueur)) {
 	        return false;
 	    }
-
 	    ArrayList<Case> listeCases = new ArrayList<>(pieces.keySet());
-	    for (Case cle : listeCases) {
+	    for (Case cle : listeCases) { 
 	        Piece valeur = pieces.get(cle); 
 	        if(valeur != null && valeur.getCol().equals(joueur)) {
 	            ArrayList<Case> deplacements = valeur.getDeplacement(this);

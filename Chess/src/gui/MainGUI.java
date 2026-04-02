@@ -18,10 +18,11 @@ public class MainGUI extends JFrame {
         setLocationRelativeTo(null);
         setContentPane(new PageAcc(this));
         setVisible(true);
-    }
+    } 
+
     public void lancerPartie() {
-        gameManager = new GameManager();
-        display = new GameDisplay(gameManager);
+        gameManager = new GameManager(); 
+        display = new GameDisplay(gameManager, null);
         setContentPane(display);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         revalidate();
@@ -31,5 +32,20 @@ public class MainGUI extends JFrame {
         SwingUtilities.invokeLater(() -> {
             new MainGUI("Xiangqi Game");
         });
+    }
+    public void lancerPartieBot(engine.process.Niveau niveau) {
+
+        engine.process.GameManager gameManager = new engine.process.GameManager();
+
+        engine.process.Bot bot = new engine.process.Bot(niveau);
+
+        GameDisplay display = new GameDisplay(gameManager, bot);
+
+        setContentPane(display);
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        revalidate();
+        repaint();
     }
 }

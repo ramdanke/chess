@@ -12,7 +12,7 @@ public ArrayList<Case> getDeplacement(Plateau P){
 	ArrayList<Case> list=new ArrayList<Case>();  
 	CaseNormal cas =this.getPosition();
 	int i=cas.getLigne()+1;  
-	int j=cas.getColonne();
+	int j=cas.getColonne();      
 	boolean B=true;
 	while(B && i<=10 ) {  
 		Piece p = P.getPieces().get(P.getCases()[i][j]); 
