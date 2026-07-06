@@ -1,0 +1,76 @@
+\newpage
+\section{Spécification du projet}
+\subsection{Notions de base et contraintes du projet}
+\label{sec:spec1}
+\subsubsection{Fonctionnement général du logiciel}
+CHESS est un jeu de stratégie à deux joueurs qui se jouent chacun à leur tour. Chaque joueur contrôle un ensemble de pièces et le but est de capturer le Général adverse. La partie se termine quand un joueur est en échec et mat, c'est-à-dire qu'il n'a plus aucun coup légal pour protéger son Général.
+\subsubsection{Notions et terminologies de base}
+\paragraph{Le plateau} Le plateau de jeu fait \textbf{11 × 11 cases} et contient plusieurs zones :
+\begin{itemize}
+\item 9 colonnes jouables × 10 lignes jouables où les pièces se déplacent normalement ;
+\item le \textbf{palais}, une zone de 3×3 cases au centre de chaque côté du plateau, dans laquelle le Général et les Conseillères sont obligés de rester ;
+\item \textbf{2 colonnes neutres} (colonnes 3 et 7) qui agissent comme des murs — aucune pièce ne peut s'y arrêter, et elles ne comptent pas dans les distances de déplacement ;
+\item \textbf{1 ligne de rivière} (ligne 5) qui sépare les deux camps et affecte les déplacements des Soldats et des Éléphants.
+\end{itemize}
+\paragraph{} Chaque joueur commence avec \textbf{16 pièces} réparties comme suit :
+\begin{table}[h!]
+\centering
+\begin{tabular} {|p{3cm}|p{1.5cm}|p{7cm}|}
+\hline
+\textbf{Pièce} & \textbf{Qté} & \textbf{Rôle} \\
+\hline
+Général & 1 & Pièce principale, sa capture = fin de partie \\
+\hline
+Conseillère & 2 & Protège le Général dans le palais \\
+\hline
+Éléphant & 2 & Défensif, ne traverse pas la rivière \\
+\hline
+Chevalier & 2 & Se déplace en L \\
+\hline
+Chariot & 2 & Pièce la plus puissante en déplacement \\
+\hline
+Canon & 2 & Capture uniquement par-dessus un écran \\
+\hline
+Soldat & 5 & Avance d'une case, plus mobile après la rivière \\
+\hline
+\end{tabular}
+\caption{Les pièces de chaque joueur}
+\label{tab:pieces}
+\end{table}
+Comme ce qui est illustré dans le tableau \ref{tab:pieces}, les deux joueurs ont exactement les mêmes pièces au départ.
+\subsubsection{Contraintes et limitations connues}
+\paragraph{Règles strictes} Certaines règles sont strictement imposées par le moteur de jeu :
+\begin{itemize}
+\item Un joueur ne peut jamais terminer son tour avec son Général en position d'être capturé (interdit de se mettre en échec) ;
+\item Les deux Généraux ne peuvent jamais se retrouver sur la même colonne sans qu'une pièce les sépare — c'est la règle du \textbf{face à face} ;
+\item Tout coup qui ne respecte pas les règles est automatiquement refusé, le joueur doit rejouer.
+\end{itemize}
+\paragraph{Règles de déplacement} Les règles de déplacement de chaque pièce sont les suivantes :
+\paragraph{Le Général} Se déplace d'une seule case horizontalement ou verticalement, uniquement dans le palais. Il ne peut jamais aller sur une case menacée par l'adversaire.
+\paragraph{Les Conseillères} Se déplacent d'une seule case en diagonale, uniquement dans le palais. Leur rôle principal est de protéger le Général.
+\paragraph{Les Éléphants} Se déplacent de deux cases en diagonale. Si la case intermédiaire est occupée, le déplacement est bloqué. Ils ne peuvent pas traverser la rivière, donc ils restent toujours dans leur moitié du plateau.
+\paragraph{Les Chariots} Se déplacent d'autant de cases qu'ils veulent horizontalement ou verticalement, à condition que le chemin soit complètement libre.
+\paragraph{Les Canons} Sans capture, ils bougent exactement comme les Chariots. Pour capturer, il faut qu'il y ait exactement une pièce (amie ou adverse) entre le Canon et sa cible — on appelle ça l'écran.
+\paragraph{Les Soldats} Avant de traverser la rivière, ils avancent uniquement d'une case vers l'avant. Après la rivière, ils peuvent aussi se déplacer latéralement. Ils ne reculent jamais.
+\paragraph{} Outils de développement utilisés dans ce projet :
+\begin{enumerate}
+\item Langage de programmation : Java (JRE 1.8)
+\item IDE : Eclipse
+\item Outil de rédaction du rapport : \LaTeX
+\item Bibliothèque de logs : Log4j 1.2.17
+\item Tests unitaires : JUnit
+\end{enumerate}
+\subsection{Fonctionnalités attendues du projet}
+\label{sec:spec2}
+\paragraph{Fonctionnalités} Ce que l'utilisateur peut faire avec CHESS :
+\begin{itemize}
+\item Voir le plateau avec les colonnes neutres affichées différemment des cases normales ;
+\item Cliquer sur une pièce pour la sélectionner et voir directement les cases où elle peut aller ;
+\item Jouer contre l'ordinateur (\textbf{VS BOT}) avec trois niveaux : Facile, Moyen, Difficile ;
+\item Jouer à deux sur la même machine (\textbf{VS HUMAIN}) ;
+\item Consulter l'historique des coups joués pendant la partie ;
+\item Voir les pièces capturées de chaque côté ;
+\item Être averti automatiquement en cas d'échec ou d'échec et mat.
+\end{itemize}
+\fig{images/diagrammecas.png}{18cm}{8cm}{Diagramme de cas d'utilisation}{cas}
+
