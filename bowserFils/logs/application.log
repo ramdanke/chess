@@ -1,0 +1,69 @@
+2026-07-06 14:35:53,544 | INFO | Moteur d'indexation fermé.
+2026-07-06 14:36:16,756 | INFO | Initialisation du moteur d'indexation.
+2026-07-06 14:36:16,756 | INFO | Début de l'indexation.
+2026-07-06 14:36:16,761 | INFO | 12 fichiers trouvés.
+2026-07-06 14:36:16,801 | INFO | Indexé : /home/ramdane/bacup/monProg.c
+2026-07-06 14:36:16,812 | INFO | Indexé : /home/ramdane/bacup/calcul.c
+2026-07-06 14:36:16,822 | INFO | Indexé : /home/ramdane/bacup/utils.c
+2026-07-06 14:36:16,833 | INFO | Indexé : /home/ramdane/bacup/debogeure.c
+2026-07-06 14:36:16,843 | INFO | Indexé : /home/ramdane/bacup/annuere.c
+2026-07-06 14:36:16,855 | INFO | Indexé : /home/ramdane/bacup/main.c
+2026-07-06 14:36:16,864 | INFO | Indexé : /home/ramdane/bacup/add.c
+2026-07-06 14:36:16,875 | INFO | Indexé : /home/ramdane/bacup/program.c
+2026-07-06 14:36:16,888 | INFO | Indexé : /home/ramdane/bacup/comptfichier.c
+2026-07-06 14:36:16,898 | INFO | Indexé : /home/ramdane/bacup/cat.c
+2026-07-06 14:36:16,909 | INFO | Indexé : /home/ramdane/bacup/mul.c
+2026-07-06 14:36:16,922 | INFO | Indexé : /home/ramdane/bacup/fileHand.c
+2026-07-06 14:36:16,925 | INFO | Analyse=12 | Indexés=12 | Mis à jour=0 | Ignorés=0 | Supprimés=0 | Erreurs=0 | Durée=0.17s
+2026-07-06 14:36:16,925 | INFO | Fin de l'indexation.
+2026-07-06 14:36:16,925 | INFO | Moteur d'indexation fermé.
+2026-07-06 14:36:16,925 | INFO | Moteur d'indexation fermé.
+2026-07-06 14:39:31,643 | INFO | Initialisation du moteur d'indexation.
+2026-07-06 14:39:31,643 | INFO | Début de l'indexation.
+2026-07-06 14:39:31,645 | INFO | 1 fichiers trouvés.
+2026-07-06 14:39:31,661 | INFO | Indexé : /home/ramdane/python/main.py
+2026-07-06 14:39:31,663 | INFO | Analyse=1 | Indexés=1 | Mis à jour=0 | Ignorés=0 | Supprimés=0 | Erreurs=0 | Durée=0.02s
+2026-07-06 14:39:31,663 | INFO | Fin de l'indexation.
+2026-07-06 14:39:31,663 | INFO | Moteur d'indexation fermé.
+2026-07-06 14:39:31,663 | INFO | Moteur d'indexation fermé.
+2026-07-06 14:39:59,674 | INFO | Moteur d'indexation fermé.
+2026-07-06 14:40:05,605 | INFO | Initialisation du moteur d'indexation.
+2026-07-06 14:40:05,605 | INFO | Reconstruction de l'index.
+2026-07-06 14:40:05,616 | INFO | Début de l'indexation.
+2026-07-06 14:40:05,618 | INFO | 12 fichiers trouvés.
+2026-07-06 14:40:05,682 | INFO | Indexé : /home/ramdane/bacup/utils.c
+2026-07-06 14:40:05,692 | INFO | Indexé : /home/ramdane/bacup/debogeure.c
+2026-07-06 14:40:05,701 | INFO | Indexé : /home/ramdane/bacup/monProg.c
+2026-07-06 14:40:05,709 | INFO | Indexé : /home/ramdane/bacup/calcul.c
+2026-07-06 14:40:05,717 | INFO | Indexé : /home/ramdane/bacup/annuere.c
+2026-07-06 14:40:05,727 | INFO | Indexé : /home/ramdane/bacup/main.c
+2026-07-06 14:40:05,736 | INFO | Indexé : /home/ramdane/bacup/add.c
+2026-07-06 14:40:05,746 | INFO | Indexé : /home/ramdane/bacup/program.c
+2026-07-06 14:40:05,754 | INFO | Indexé : /home/ramdane/bacup/comptfichier.c
+2026-07-06 14:40:05,763 | INFO | Indexé : /home/ramdane/bacup/cat.c
+2026-07-06 14:40:05,770 | INFO | Indexé : /home/ramdane/bacup/mul.c
+2026-07-06 14:40:05,778 | INFO | Indexé : /home/ramdane/bacup/fileHand.c
+2026-07-06 14:40:05,780 | INFO | Analyse=12 | Indexés=12 | Mis à jour=0 | Ignorés=0 | Supprimés=0 | Erreurs=0 | Durée=0.16s
+2026-07-06 14:40:05,780 | INFO | Fin de l'indexation.
+2026-07-06 14:40:05,780 | INFO | Moteur d'indexation fermé.
+2026-07-06 14:40:05,780 | INFO | Moteur d'indexation fermé.
+2026-07-06 15:03:10,902 | INFO | Initialisation du moteur d'indexation.
+2026-07-06 15:03:10,902 | INFO | Reconstruction de l'index.
+2026-07-06 15:03:10,912 | INFO | Début de l'indexation.
+2026-07-06 15:03:10,915 | INFO | 12 fichiers trouvés.
+2026-07-06 15:03:10,958 | INFO | Indexé : /home/ramdane/bacup/utils.c
+2026-07-06 15:03:10,966 | INFO | Indexé : /home/ramdane/bacup/calcul.c
+2026-07-06 15:03:10,974 | INFO | Indexé : /home/ramdane/bacup/monProg.c
+2026-07-06 15:03:10,982 | INFO | Indexé : /home/ramdane/bacup/debogeure.c
+2026-07-06 15:03:10,992 | INFO | Indexé : /home/ramdane/bacup/annuere.c
+2026-07-06 15:03:10,999 | INFO | Indexé : /home/ramdane/bacup/main.c
+2026-07-06 15:03:11,007 | INFO | Indexé : /home/ramdane/bacup/add.c
+2026-07-06 15:03:11,015 | INFO | Indexé : /home/ramdane/bacup/program.c
+2026-07-06 15:03:11,023 | INFO | Indexé : /home/ramdane/bacup/comptfichier.c
+2026-07-06 15:03:11,030 | INFO | Indexé : /home/ramdane/bacup/cat.c
+2026-07-06 15:03:11,037 | INFO | Indexé : /home/ramdane/bacup/mul.c
+2026-07-06 15:03:11,044 | INFO | Indexé : /home/ramdane/bacup/fileHand.c
+2026-07-06 15:03:11,046 | INFO | Analyse=12 | Indexés=12 | Mis à jour=0 | Ignorés=0 | Supprimés=0 | Erreurs=0 | Durée=0.13s
+2026-07-06 15:03:11,046 | INFO | Fin de l'indexation.
+2026-07-06 15:03:11,047 | INFO | Moteur d'indexation fermé.
+2026-07-06 15:03:11,047 | INFO | Moteur d'indexation fermé.
